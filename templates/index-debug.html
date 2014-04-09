@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tonal 3D Modeller - Debug</title>
+		<script src="../static/js/jquery-2.1.0.min.js"></script>
+		<script src="../static/js/three-r66-0-g8413a86.min.js"></script>
+        <script src="../static/js/t3dm-debug.js"></script>
+    </head>
+    <body>
+        <input type="file" id="localFile" name="file" /></br>
+        Generator: <input type="number" id="generator" value="1"/></br>
+        <p id="info"></p>
+        <table border="1">
+        <tr>
+            <th></th>
+            <th>Bass</th>
+            <th>Tenor</th>
+            <th>Alto</th>
+            <th>Soprano</th>
+        </tr>
+        <tr>
+            <td>Previous</td>
+            <td id="previous_bass"></td>
+            <td id="previous_tenor"></td>
+            <td id="previous_alto"></td>
+            <td id="previous_soprano"></td>
+        </tr>
+        <tr>
+            <td>Current</td>
+            <td id="current_bass"></td>
+            <td id="current_tenor"></td>
+            <td id="current_alto"></td>
+            <td id="current_soprano"></td>
+        </tr>
+        <tr>
+            <td>Next</td>
+            <td id="next_bass"></td>
+            <td id="next_tenor"></td>
+            <td id="next_alto"></td>
+            <td id="next_soprano"></td>
+        </tr>
+        </table> 
+        <div id="view3d">
+        </div>
+    </body>
+    <script type="text/javascript" defer>
+
+        var composer = null;
+        var piece = null;
+        var pieceArray = [];
+
+        function handleFileSelect(aEvent) 
+        {
+            var files = aEvent.target.files;
+            if(files.length == 1)
+            {
+                var file = files[0];
+                var fileReader = new FileReader();
+                fileReader.onload = function(aEvent) 
+                { 
+                    var contents = aEvent.target.result;
+                    var lines = contents.split("\n");
+                    var measure = 0;
+                    for(var i = 0; i < lines.length; i++)
+                    {
+                        // Check for ignored line.
+                        var line = lines[i].trim();
+                        if(line.length == 0 || line.substr(0, 1) == "#")
+                        {
+                            continue;
+                        }
+
+                        // Wait for piece name and composer.
+                        if(composer === null)
+                        {
+                            composer = line;
+                            continue;
+                        }
+                        if(piece === null)
+                        {
+                            piece = line;
+                            continue;
+                        }
+
+                        // Process line.
+                        var pitches = line.split("\t");
+                        for(var j = 0; j < pitches.length; j++)
+                        {
+                            if(pieceArray.length < j + 1)
+                            {
+                                pieceArray[j] = [];
+                            }
+                            pieceArray[j][measure] = pitches[j];
+                        }
+                        measure++;
+                    }
+                   $("#view3d").Tonal3DModeller(composer, piece, pieceArray, $('#generator').val());
+                };
+                fileReader.readAsText(file);
+            }
+        }
+        document.getElementById('localFile').addEventListener('change', handleFileSelect, false);
+
+    </script>
+</html>

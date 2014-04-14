@@ -1,3 +1,4 @@
+
 (function ($)
 {
     /**
@@ -106,6 +107,22 @@
             }
             mHarmonyModelGeometry.verticesNeedUpdate = true;
 
+            // Get area.
+            var area0 = getTriangleArea(mHarmonyModelGeometry.vertices[0],
+                                        mHarmonyModelGeometry.vertices[1],
+                                        mHarmonyModelGeometry.vertices[2]);
+            var area1 = getTriangleArea(mHarmonyModelGeometry.vertices[0],
+                                        mHarmonyModelGeometry.vertices[1],
+                                        mHarmonyModelGeometry.vertices[3]);
+            var area2 = getTriangleArea(mHarmonyModelGeometry.vertices[1],
+                                        mHarmonyModelGeometry.vertices[2],
+                                        mHarmonyModelGeometry.vertices[3]);
+            var area3 = getTriangleArea(mHarmonyModelGeometry.vertices[0],
+                                        mHarmonyModelGeometry.vertices[2],
+                                        mHarmonyModelGeometry.vertices[3]);
+            var area = area0 + area1 + area2 + area3;
+            area = area / 2;
+
             // SEt previous meta data.
             if(mPieceCurrentPlace - 1 >= 0)
             {
@@ -116,10 +133,10 @@
             }
             else
             {
-                $('#next_bass').text("");
-                $('#next_tenor').text("");
-                $('#next_alto').text("");
-                $('#next_soprano').text("");
+                $('#previous_bass').text("");
+                $('#previous_tenor').text("");
+                $('#previous_alto').text("");
+                $('#previous_soprano').text("");
             }
 
             // Set current meta data.
@@ -127,6 +144,7 @@
             $('#current_tenor').text(mPiecePitches[1][mPieceCurrentPlace]);
             $('#current_alto').text(mPiecePitches[2][mPieceCurrentPlace]);
             $('#current_soprano').text(mPiecePitches[3][mPieceCurrentPlace]);
+            $('#current_area').text(area);
 
             // SEt next meta data.
             if(mPieceCurrentPlace + 1 < mPiecePitches[0].length)
@@ -287,6 +305,23 @@
 
         };
 
+        /**
+         * Calculates area of a triangle in 3D.
+         */
+        var getTriangleArea = function(aX0, aX1, aX2)
+        {
+            var a = {x: aX2.x - aX0.x, y: aX2.y - aX0.y, z: aX2.z - aX0.z};
+            var b = {x: aX2.x - aX1.x, y: aX2.y - aX1.y, z: aX2.z - aX1.z};
+            var crossProduct = {x: (a.y * b.z) - (a.z * b.y),
+                                y: (a.z * b.x) - (a.x * b.z),
+                                z: (a.x * b.y) - (a.z * b.x)};
+            var squareRoot = Math.sqrt((crossProduct.x * crossProduct.x),
+                                       + (crossProduct.y * crossProduct.y),
+                                       + (crossProduct.z * crossProduct.z));
+            return squareRoot / 2;
+        };
+
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // PRIVATE - Initializers
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -307,7 +342,7 @@
         {
             mScene = new THREE.Scene();
             mCamera = new THREE.PerspectiveCamera(75, window.innerWidth / 2 / window.innerHeight, 0.1, 1000);
-            mRenderer = new THREE.WebGLRenderer();
+            mRenderer = new THREE.WebGLRenderer({alpha: true});
             mRenderer.setSize(window.innerWidth / 2, window.innerHeight );
             document.body.appendChild(mRenderer.domElement);
         }
@@ -516,7 +551,7 @@
                 {
                     generator: aGenerator,
                     voices: 4,
-                    spacing: 70,
+                    spacing: 60,
                     radius: 120,
                     color:
                     {

@@ -1,0 +1,34 @@
+Chord
+Dominant 7th
+
+# Root position
+E0	G#0	B0	D0
+E0	G#0	D0	B0
+E0	B0	G#0	D0
+E0	B0	D0	G#0
+E0	D0	G#0	B0
+E0	D0	B0	G#0
+
+# First inversion
+G#0	E0	B0	D0
+G#0	E0	D0	B0
+G#0	B0	E0	D0
+G#0	B0	D0	E0
+G#0	D0	E0	B0
+G#0	D0	B0	E0
+
+# Second Inversion
+B0	E0	G#0	D0
+B0	E0	D0	G#0
+B0	G#0	E0	D0
+B0	G#0	D0	E0
+B0	D0	E0	G#0
+B0	D0	G#0	E0
+
+# Third inversion
+D0	E0	G#0	B0
+D0	E0	B0	G#0
+D0	G#0	E0	B0
+D0	G#0	B0	E0
+D0	B0	E0	G#0
+D0	B0	G#0	E0

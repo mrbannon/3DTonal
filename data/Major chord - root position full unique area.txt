@@ -1,0 +1,6 @@
+Triads
+A major
+
+A0	C#0	A0	E0
+A0	C#0	E0	E0
+A0	E0	A0	C#0

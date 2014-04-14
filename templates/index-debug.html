@@ -7,40 +7,46 @@
         <script src="../static/js/t3dm-debug.js"></script>
     </head>
     <body>
-        <input type="file" id="localFile" name="file" /></br>
-        Generator: <input type="number" id="generator" value="1"/></br>
-        <p id="info"></p>
-        <table border="1">
-        <tr>
-            <th></th>
-            <th>Bass</th>
-            <th>Tenor</th>
-            <th>Alto</th>
-            <th>Soprano</th>
-        </tr>
-        <tr>
-            <td>Previous</td>
-            <td id="previous_bass"></td>
-            <td id="previous_tenor"></td>
-            <td id="previous_alto"></td>
-            <td id="previous_soprano"></td>
-        </tr>
-        <tr>
-            <td>Current</td>
-            <td id="current_bass"></td>
-            <td id="current_tenor"></td>
-            <td id="current_alto"></td>
-            <td id="current_soprano"></td>
-        </tr>
-        <tr>
-            <td>Next</td>
-            <td id="next_bass"></td>
-            <td id="next_tenor"></td>
-            <td id="next_alto"></td>
-            <td id="next_soprano"></td>
-        </tr>
-        </table> 
-        <div id="view3d">
+        <div style="float: left; width: 400px">
+            <table border="1">
+                <tr>
+                    <th></th>
+                    <th>Bass</th>
+                    <th>Tenor</th>
+                    <th>Alto</th>
+                    <th>Soprano</th>
+                    <th>Area</th>
+                </tr>
+                <tr>
+                    <td>Previous</td>
+                    <td id="previous_bass"></td>
+                    <td id="previous_tenor"></td>
+                    <td id="previous_alto"></td>
+                    <td id="previous_soprano"></td>
+                    <td id="previous_area"></td>
+                </tr>
+                <tr>
+                    <td>Current</td>
+                    <td id="current_bass"></td>
+                    <td id="current_tenor"></td>
+                    <td id="current_alto"></td>
+                    <td id="current_soprano"></td>
+                    <td id="current_area"></td>
+                </tr>
+                <tr>
+                    <td>Next</td>
+                    <td id="next_bass"></td>
+                    <td id="next_tenor"></td>
+                    <td id="next_alto"></td>
+                    <td id="next_soprano"></td>
+                    <td id="next_area"></td>
+                </tr>
+            </table>
+            <input type="file" id="localFile" name="file" /></br>
+            Generator: <input type="number" id="generator" value="1"/></br>
+            <p id="info"></p>
+        </div> 
+        <div id="view3d" style="float: left">
         </div>
     </body>
     <script type="text/javascript" defer>

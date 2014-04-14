@@ -1,0 +1,35 @@
+Triads
+A major
+
+# 0 - symmetrical to 1, same area as 3
+A0	A0	C#0	E0
+
+# 1 - symmetrical to 0, same area as 9
+A0	A0	E0	C#0
+
+# 2 - same as 3 in single-clockface reduction, unique area
+A0	C#0	A0	E0
+
+# 3 - same as 2 in single-clockface reduction, unique area
+A0	C#0	C#0	E0	
+
+#4 - same area as 8
+A0	C#0	E0	A0
+
+#5 - same area as 10
+A0	C#0	E0	C#0
+
+#6 - area 12600 (unique)
+A0	C#0	E0	E0
+
+# 7 - unique area
+A0	E0	A0	C#0
+
+#8 - same area as 4
+A0	E0	C#0	A0
+
+#9 - same area as 1
+A0	E0	C#0	C#0
+
+#10 - same area as 5
+A0	E0	C#0	E0

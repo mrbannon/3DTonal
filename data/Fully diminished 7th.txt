@@ -1,0 +1,34 @@
+Chord
+Fully diminished 7th
+
+# Root position
+G#0	B0	D0	F0
+G#0	B0	F0	D0
+G#0	D0	B0	F0
+G#0	D0	F0	B0
+G#0	F0	B0	D0
+G#0	F0	D0	B0
+
+# First inversion
+B0	G#0	D0	F0
+B0	G#0	F0	D0
+B0	D0	G#0	F0
+B0	D0	F0	G#0
+B0	F0	G#0	D0
+B0	F0	D0	G#0
+
+# Second inversion
+D0	G#0	B0	F0
+D0	G#0	F0	B0
+D0	B0	G#0	F0
+D0	B0	F0	G#0
+D0	F0	G#0	B0
+D0	F0	B0	G#0
+
+# Third inversion
+F0	G#0	B0	D0
+F0	G#0	D0	B0
+F0	B0	G#0	D0
+F0	B0	D0	G#0
+F0	D0	G#0	B0
+F0	D0	B0	G#0
